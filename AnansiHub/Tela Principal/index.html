@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tela Principal</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="sidebar">
+        <button class="service1-button" onclick="voltartela()">
+            <img src="/Imagens/icons8-arrow-left-96.png" alt="Voltar"/>
+        </button>
+        <button class="tab-link active" onclick="openTab(event, 'principal')">Principal</button>
+        <button class="tab-link" onclick="openTab(event, 'cadastrarPerfil')">Editar Perfil</button>
+        <button class="tab-link" onclick="openTab(event, 'cadastrarProjetos')">Cadastrar Projetos</button>
+    </div>
+<input type="button">
+    <div class="content">
+        <header>
+            <h1>Tela Principal</h1>
+        </header>
+
+        <div id="principal" class="tab-content active">
+            <div class="search-bar">
+                <input type="text" placeholder="Pesquisar...">
+            </div>
+
+        </div>
+
+        <div class="card">       
+        <div id="cadastrarPerfil" class="tab-content">
+            <h2>Editar Perfil</h2>
+            <form id="perfil-form">
+                <div class="form-group">
+                    <label for="nome">Nome:</label>
+                    <input class="input-style" type="text" id="nome" name="nome" placeholder="Digite seu nome">
+                </div>
+                <div class="form-group">
+                    <label for="email">E-mail:</label>
+                    <input class="input-style" type="email" id="email" name="email" placeholder="Digite seu e-mail">
+                </div>
+                <div class="form-group">
+                    <label for="senha">Senha:</label>
+                    <input class="input-style" type="password" id="senha" name="senha" placeholder="Digite sua senha">
+                </div>
+                <button  class="botao-estilo" type="submit">Confirmar</button>
+            </form>
+        </div>
+        <div id="cadastrarProjetos" class="tab-content">
+            <h2>Cadastrar Projetos</h2>
+            <form id="projeto-form">
+                <div class="form-group">
+                    <label for="tituloProjeto">Título do Projeto:</label>
+                    <input class="input-style" type="text" id="tituloProjeto" name="tituloProjeto" placeholder="Digite o título do projeto">
+                </div>
+                <div class="form-group">
+                    <label for="descricaoProjeto">Descrição:</label>
+                    <input class="input-style" type="text" id="descricaoProjeto" name="descricaoProjeto" placeholder="Descreva o projeto">
+                </div>
+                <div class="form-group">
+                    <label for="dataEntrega">Data de Entrega:</label>
+                    <input class="input-style" type="date" id="dataEntrega" name="dataEntrega">
+                </div>
+                <button class="botao-estilo" type="submit">Cadastrar Projeto</button>
+            </form>
+        </div>
+    </div>
+</div>
+    <script src="script.js"></script>
+</body>
+</html>

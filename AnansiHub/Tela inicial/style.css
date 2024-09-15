@@ -1,0 +1,101 @@
+/* style.css */
+body {
+    font-family: Arial, sans-serif;
+    background: rgb(239, 239, 239);
+    margin: 0;
+    padding: 0;
+    text-align: center; /* Centraliza o texto e os elementos */
+}
+
+.Titulo {
+    font-size: 40px;
+    color: rgb(74, 74, 74);
+    font-weight: bold;
+    margin-top: 20px;
+}
+
+.Bordao {
+    font-size: 20px;
+    color: rgb(74, 74, 74);
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.imagem {
+    max-width: 400px;
+    height: auto;
+    margin-bottom: 20px;
+}
+
+.tab-container {
+    display: flex;
+    justify-content: center;
+    background-color: #ddd;
+    padding: 10px;
+    margin: 0 auto; 
+    margin-top: -50px; 
+    margin-bottom: 20px;
+    max-width: 322px;
+    border-radius: 2px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+
+.tab-button {
+    background-color: #ddd;
+    border: none;
+    padding: 14px 20px;
+    cursor: pointer;
+    font-size: 17px;
+    margin: 0 10px;
+    outline: none;
+}
+
+.tab-button:hover {
+    background-color: #ccc;
+}
+
+
+.tab-content {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.card {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    padding: 20px;
+    width: 300px;
+    border-radius: 5px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    margin-top: -40px;
+}
+
+.input-email {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 1em;
+    box-sizing: border-box;
+}
+
+.btn-login {
+    width: 100%;
+    padding: 10px;
+    background-color: #2e2f2e;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-login:hover {
+    background-color: #626262;
+}
+
+
