@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         var email = document.getElementById("email").value;
         var senha = document.getElementById("senha").value;
 
-        if (email === "1232" && senha === "1234") {
+        if (email === "1234" && senha === "1234") {
             window.location.href = "/Tela Principal/index.html";
         } else {
             alert("E-mail ou senha incorretos.");
