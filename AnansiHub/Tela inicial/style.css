@@ -1,4 +1,4 @@
-/* style.css */
+
 body {
     font-family: Arial, sans-serif;
     background: rgb(239, 239, 239);
@@ -86,7 +86,7 @@ body {
 .btn-login {
     width: 100%;
     padding: 10px;
-    background-color: #2e2f2e;
+    background-color: #162635;
     color: white;
     border: none;
     border-radius: 5px;

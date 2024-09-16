@@ -8,7 +8,7 @@ body {
 
 .sidebar {
     width: 200px;
-    background-color: #333;
+    background-color: #162635;
     height: 100vh;
     position: fixed;
     left: 0;
@@ -20,7 +20,7 @@ body {
 }
 
 .sidebar button {
-    background-color: #444;
+    background-color: #1B3A4B;
     color: white;
     padding: 15px;
     margin: 10px 0;
@@ -70,7 +70,7 @@ body {
 }
 
 header {
-    background-color: #333;
+    background-color: #162635;
     color: white;
     padding: 1rem;
     text-align: center;
@@ -158,3 +158,33 @@ header {
     background-color: #626262;
 }
 
+.input-container {
+    position: relative;
+    width: 250px; 
+    margin: 0 auto; 
+}
+
+.Research-input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; 
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.input-container button {
+    position: absolute;
+    right: -30px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 0;
+}
+
+.input-container button img {
+    width: 20px; 
+    height: auto;
+}

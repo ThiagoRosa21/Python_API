@@ -53,7 +53,7 @@ function salvarProjeto(projeto) {
     mostrarProjetos();
 }
 
-// Função para apagar um projeto
+
 function apagarProjeto(index) {
     const projetos = JSON.parse(localStorage.getItem('projetos')) || [];
     projetos.splice(index, 1); 
@@ -96,3 +96,45 @@ function mostrarProjetos() {
 
 
 document.addEventListener('DOMContentLoaded', mostrarProjetos);
+
+
+function pesquisa() {
+    /* criei essas varieveis para apoio na pesquisa*/
+    const termoPesquisa = document.getElementById('searchInput').value.toLowerCase();
+    const projetos = JSON.parse(localStorage.getItem('projetos')) || [];
+    const principalDiv = document.getElementById('principal');
+
+    let projetosHTML = '<h2>Projetos Cadastrados</h2>';
+    projetosHTML += '<div class="service1-wrapper">';
+
+
+    /* filtro para não haver confusão entre as frases. Não vai haver diferença entre maiúsculo ou minusculo*/
+    const projetosFiltrados = projetos.filter(projeto =>
+        projeto.titulo.toLowerCase().includes(termoPesquisa) ||
+        projeto.descricao.toLowerCase().includes(termoPesquisa) ||
+        projeto.data.toLowerCase().includes(termoPesquisa)
+    );
+
+    if (projetosFiltrados.length > 0) { /* condição para verifcar se corresponde oa termo da pesquisa*/
+        projetosFiltrados.forEach((projeto, index) => { /* filtro pra filtragem. O for each vai permitir que faça uma função em cada item do json*/
+            projetosHTML += `
+                <div class="service1-item">
+                    <h3>${projeto.titulo}</h3>
+                    <p style="font-weight:bold;">Descrição:</p>
+                    <p>${projeto.descricao}</p>
+                    <p>Data de Entrega: ${projeto.data}</p>`;
+
+            if (projeto.imagem) {/* verificação se tem imagem no cadastro*/
+                projetosHTML += `<img src="${projeto.imagem}" alt="Imagem do Projeto" style="max-width: 100%; height: auto;">`;
+            }
+
+            projetosHTML += `<br><br><button onclick="apagarProjeto(${index})">Apagar</button>
+                </div>`;
+        });
+    } else {
+        projetosHTML += '<p>Nenhum projeto encontrado.</p>';
+    }
+
+    projetosHTML += '</div>';
+    principalDiv.innerHTML = projetosHTML;
+}
