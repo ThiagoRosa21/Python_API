@@ -27,16 +27,33 @@ document.getElementById('projeto-form').addEventListener('submit', function (eve
     const data = document.getElementById('dataEntrega').value;
     const imagemInput = document.getElementById('imagemProjeto');
     let imagem = '';
+    const data_verify = new Date(); // CONSTANTE DE VERIFICAR DE DATA
+
+
+    // VERIFICADORES DOS INPUTS
+
+if(titulo.length <= 8){
+    alert("Adicione pelo menos 8 caracteres no título")
+}
+
+if(descricao.length >= isNaN){
+    alert("Coloque no mínimo 1 caracteres na descrição do projeto")
+}
+
+// ADICIONAR CONDIÇÃO DA DATA
+// ADICIONAR OPÇÃO PARA O USUÁRIO COLOCAR IMAGEM
+// ADICIONAR FUNÇÃO ARA NÃO CADASTRAR PROJETO CASO UMA DAS CONDIÇÕES NÃO SEJA ADERIDA
+
 
     if (imagemInput.files && imagemInput.files[0]) {
         const reader = new FileReader();
         reader.onload = function (e) {
             imagem = e.target.result; 
-            salvarProjeto({ titulo, descricao, data, imagem });
+            salvarProjeto({ titulo, descricao, data,imagem });
         };
         reader.readAsDataURL(imagemInput.files[0]);
     } else {
-        salvarProjeto({ titulo, descricao, data, imagem });
+        salvarProjeto({ titulo, descricao, data,valor, imagem });
     }
 });
 
@@ -76,7 +93,7 @@ function mostrarProjetos() {
                     <h3>${projeto.titulo}</h3>
                     <p style="font-weight:bold;">Descrição:</p>
                     <p>${projeto.descricao}</p>
-                    <p>Data de Entrega: ${projeto.data}</p>`;
+                    <p>Prazo de Entrega: ${projeto.data}</p>`;
 
          
             if (projeto.imagem) {
@@ -99,7 +116,7 @@ document.addEventListener('DOMContentLoaded', mostrarProjetos);
 
 
 function pesquisa() {
-    /* criei essas varieveis para apoio na pesquisa*/
+    
     const termoPesquisa = document.getElementById('searchInput').value.toLowerCase();
     const projetos = JSON.parse(localStorage.getItem('projetos')) || [];
     const principalDiv = document.getElementById('principal');
@@ -108,23 +125,23 @@ function pesquisa() {
     projetosHTML += '<div class="service1-wrapper">';
 
 
-    /* filtro para não haver confusão entre as frases. Não vai haver diferença entre maiúsculo ou minusculo*/
+    
     const projetosFiltrados = projetos.filter(projeto =>
         projeto.titulo.toLowerCase().includes(termoPesquisa) ||
         projeto.descricao.toLowerCase().includes(termoPesquisa) ||
         projeto.data.toLowerCase().includes(termoPesquisa)
     );
 
-    if (projetosFiltrados.length > 0) { /* condição para verifcar se corresponde oa termo da pesquisa*/
-        projetosFiltrados.forEach((projeto, index) => { /* filtro pra filtragem. O for each vai permitir que faça uma função em cada item do json*/
+    if (projetosFiltrados.length > 0) {
+        projetosFiltrados.forEach((projeto, index) => {
             projetosHTML += `
                 <div class="service1-item">
                     <h3>${projeto.titulo}</h3>
                     <p style="font-weight:bold;">Descrição:</p>
                     <p>${projeto.descricao}</p>
-                    <p>Data de Entrega: ${projeto.data}</p>`;
+                    <p> Prazo de Entrega ${projeto.data}</p>`;
 
-            if (projeto.imagem) {/* verificação se tem imagem no cadastro*/
+            if (projeto.imagem) {
                 projetosHTML += `<img src="${projeto.imagem}" alt="Imagem do Projeto" style="max-width: 100%; height: auto;">`;
             }
 
