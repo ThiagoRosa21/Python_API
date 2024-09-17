@@ -99,3 +99,18 @@ body {
 }
 
 
+.btn-cadastro {
+    width: 100%;
+    padding: 10px;
+    background-color: #162635;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.btn-cadastro:hover {
+    background-color: #626262;
+}
+

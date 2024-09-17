@@ -155,3 +155,80 @@ function pesquisa() {
     projetosHTML += '</div>';
     principalDiv.innerHTML = projetosHTML;
 }
+
+
+
+function carregarPerfil() {
+    var emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+
+    var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    var usuarioAtual = usuarios.find(function(usuario) {
+        return usuario.email === emailUsuarioLogado;
+    });
+
+    if (usuarioAtual) {
+        document.getElementById("nome").value = usuarioAtual.nome;
+    } else {
+        alert("Usuário não encontrado.");
+    }
+}
+
+
+function editarPerfil() {
+    var emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+
+    var emailAtual = document.getElementById("emailAtual").value;
+    var senhaAtual = document.getElementById("senhaAtual").value;
+    var novoNome = document.getElementById("nome").value;
+    var novaSenha = document.getElementById("senhaNova").value;
+    var confirmarSenhaNova = document.getElementById("confirmarSenhaNova").value;
+
+
+    var usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    var usuarioIndex = usuarios.findIndex(function(usuario) {
+        return usuario.email === emailUsuarioLogado;
+    });
+
+    if (usuarioIndex !== -1) {
+        var usuarioAtual = usuarios[usuarioIndex];
+
+        // Verifica se o e-mail e a senha atuais estão corretos
+        if (usuarioAtual.email !== emailAtual || usuarioAtual.senha !== senhaAtual) {
+            alert("E-mail ou senha atual incorretos. Por favor, tente novamente.");
+            return;
+        }
+
+        // Verifica se os campos estão preenchidos
+        if (!novoNome || !novaSenha || !confirmarSenhaNova) {
+            alert("Por favor, preencha todos os campos.");
+            return;
+        }
+
+        // Verifica se a nova senha tem pelo menos 8 caracteres
+        if (novaSenha.length < 8) {
+            alert("A nova senha precisa ter no mínimo 8 dígitos.");
+            return;
+        }
+
+        // Verifica se as novas senhas coincidem
+        if (novaSenha !== confirmarSenhaNova) {
+            alert("As senhas novas não coincidem.");
+            return;
+        }
+
+        // Atualiza os dados
+        usuarios[usuarioIndex].nome = novoNome;
+        usuarios[usuarioIndex].senha = novaSenha;
+
+        localStorage.setItem("usuarios", JSON.stringify(usuarios));
+
+        alert("Perfil atualizado com sucesso!");
+    } else {
+        alert("Erro ao atualizar o perfil.");
+    }
+}
+
+// carregar a página de edição
+document.addEventListener("DOMContentLoaded", function () {
+    carregarPerfil();
+});

@@ -45,23 +45,36 @@
             <h2>Editar Perfil</h2>
             <div class="card">
                 <form id="perfil-form">
+                    <!-- Campo para confirmar o email e semjha atual -->
+
                     <div class="form-group">
-                        <label for="nome">Nome:</label>
-                        <input class="input-style" type="text" id="nome" name="nome" placeholder="Digite seu nome">
+                        <label for="senhaAtual">Confirme seu email atual:</label>
+                        <input type="email" id="emailAtual" placeholder="Digite seu e-mail atual" class="input-email">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="senhaAtual">Confirme sua senha atual:</label>
+                        <input class="input-style" type="password" id="senhaAtual" name="senhaAtual" placeholder="Digite sua senha atual">
+                    </div>
+                    <!-- Campos para modificar nome e senha -->
+                    <div class="form-group">
+                        <label for="nome">Novo nome:</label>
+                        <input class="input-style" type="text" id="nome" name="nome" placeholder="Digite seu novo nome">
                     </div>
                     <div class="form-group">
-                        <label for="email">E-mail:</label>
-                        <input class="input-style" type="email" id="email" name="email" placeholder="Digite seu e-mail">
+                        <label for="senhaNova">Nova senha:</label>
+                        <input class="input-style" type="password" id="senhaNova" name="senhaNova" placeholder="Digite sua nova senha">
                     </div>
                     <div class="form-group">
-                        <label for="senha">Senha:</label>
-                        <input class="input-style" type="password" id="senha" name="senha"
-                            placeholder="Digite sua senha">
+                        <label for="confirmarSenhaNova">Confirme a nova senha:</label>
+                        <input class="input-style" type="password" id="confirmarSenhaNova" name="confirmarSenhaNova" placeholder="Confirme sua nova senha">
                     </div>
-                    <button class="botao-estilo" type="submit">Confirmar</button>
+                    <button class="botao-estilo" type="button" onclick="editarPerfil()">Confirmar</button>
                 </form>
             </div>
         </div>
+        
+        
 
 
         <div id="cadastrarProjetos" class="tab-content">
