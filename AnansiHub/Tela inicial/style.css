@@ -1,10 +1,9 @@
-
 body {
     font-family: Arial, sans-serif;
     background: rgb(239, 239, 239);
     margin: 0;
     padding: 0;
-    text-align: center; 
+    text-align: center;
 }
 
 .Titulo {
@@ -22,7 +21,7 @@ body {
 }
 
 .imagem {
-    max-width: 400px;
+    max-width: 100%;
     height: auto;
     margin-bottom: 20px;
 }
@@ -33,13 +32,12 @@ body {
     background-color: #ddd;
     padding: 10px;
     margin: 0 auto; 
-    margin-top: -50px; 
+    margin-top: -50px;
     margin-bottom: 20px;
     max-width: 322px;
     border-radius: 2px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-
 
 .tab-button {
     background-color: #ddd;
@@ -54,7 +52,6 @@ body {
 .tab-button:hover {
     background-color: #ccc;
 }
-
 
 .tab-content {
     display: flex;
@@ -83,7 +80,7 @@ body {
     box-sizing: border-box;
 }
 
-.btn-login {
+.btn-login, .btn-cadastro {
     width: 100%;
     padding: 10px;
     background-color: #162635;
@@ -94,23 +91,31 @@ body {
     cursor: pointer;
 }
 
-.btn-login:hover {
+.btn-login:hover, .btn-cadastro:hover {
     background-color: #626262;
 }
 
+@media only screen and (max-width: 768px) {
+    .Titulo {
+        font-size: 30px;
+    }
 
-.btn-cadastro {
-    width: 100%;
-    padding: 10px;
-    background-color: #162635;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 1em;
-    cursor: pointer;
+    .Bordao {
+        font-size: 16px;
+    }
+
+    .card {
+        width: 90%;
+        margin-top: 0;
+    }
+
+    .tab-container {
+        flex-direction: column;
+        max-width: 100%;
+    }
+
+    .tab-button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
 }
-
-.btn-cadastro:hover {
-    background-color: #626262;
-}
-

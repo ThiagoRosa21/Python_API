@@ -24,17 +24,20 @@ document.addEventListener("DOMContentLoaded", function() {
     // Adiciona o evento de clique para o botão de login
     document.getElementById("login-btn").addEventListener("click", login);
 
-    // Função de cadastro
     function verificarEmail() {
         var email = document.getElementById("cadastro-email").value;
     
-        // Verificar se o e-mail termina com "@gmail.com"
-        if (!email.endsWith("@gmail.com")) {
-            alert("Por favor, adicione o @gmail.com no seu e-mail.");
+        // Verificar se o e-mail é válido com uma expressão regular
+        var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        if (!emailRegex.test(email)) {
+            alert("Por favor, insira um e-mail válido.");
             return false;
         }
+    
         return true;
     }
+    
 
     function cadastro() {
         var email = document.getElementById("cadastro-email").value;

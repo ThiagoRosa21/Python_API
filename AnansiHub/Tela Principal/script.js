@@ -25,8 +25,10 @@ document.getElementById('projeto-form').addEventListener('submit', function (eve
     const titulo = document.getElementById('tituloProjeto').value;
     const descricao = document.getElementById('descricaoProjeto').value;
     const data = document.getElementById('dataEntrega').value;
-    const imagemInput = document.getElementById('imagemProjeto');
-    let imagem = '';
+    const valor = document.getElementById('valor').value; // POR ALGUM MOTIVO O VALOR DO PROJETO NÃO PRINTA NA TELA QUANDO COLOCO IMAGEM
+    const imagemInput = document.getElementById('imagemProjeto'); // ALÉM DISSO, O METODO DE PESQUISA TÁ DANDO RUIM 
+    let imagem = '';                                              // TIPO, QUANDO PESQUISO O NOME DO PROJETOE CLICO EM SAIBA MAIS, ELE VAI
+                                                                  // PARA PÁGINA DE UM PROJETO DIFERENTE 
     const data_verify = new Date(); // CONSTANTE DE VERIFICAR DE DATA
 
 
@@ -38,6 +40,11 @@ if(titulo.length <= 8){
 
 if(descricao.length >= isNaN){
     alert("Coloque no mínimo 1 caracteres na descrição do projeto")
+}
+
+if (valor <= 0) {
+    alert("Por favor, insira um valor de pagamento válido.");
+    return;
 }
 
 // ADICIONAR CONDIÇÃO DA DATA
@@ -60,13 +67,17 @@ if(descricao.length >= isNaN){
 
 function salvarProjeto(projeto) {
     const projetos = JSON.parse(localStorage.getItem('projetos')) || [];
+    const emailUsuarioLogado = localStorage.getItem("usuarioLogado");
+    const usuarios = JSON.parse(localStorage.getItem("usuarios")) || [];
+    const usuarioAtual = usuarios.find(usuario => usuario.email === emailUsuarioLogado);
+
+
+    projeto.nomeUsuario = usuarioAtual ? usuarioAtual.nome : "Usuário Desconhecido";
+
     projetos.push(projeto);
     localStorage.setItem('projetos', JSON.stringify(projetos));
 
-    
     document.getElementById('projeto-form').reset();
-
-    
     mostrarProjetos();
 }
 
@@ -84,33 +95,34 @@ function mostrarProjetos() {
     const principalDiv = document.getElementById('principal');
 
     let projetosHTML = '<h2>Projetos Cadastrados</h2>';
-    projetosHTML += '<div class="service1-wrapper">'; 
+    projetosHTML += '<div class="service1-wrapper">';
 
     if (projetos.length > 0) {
         projetos.forEach((projeto, index) => {
             projetosHTML += `
                 <div class="service1-item">
                     <h3>${projeto.titulo}</h3>
-                    <p style="font-weight:bold;">Descrição:</p>
-                    <p>${projeto.descricao}</p>
-                    <p>Prazo de Entrega: ${projeto.data}</p>`;
+                    <p><strong>Prazo de Entrega:</strong> ${projeto.data}</p>
+                    <p><strong>Pagamento:</strong> R$ ${projeto.valor}</p>
+                    <p><strong>Criado por:</strong> ${projeto.nomeUsuario}</p>
+            `;
 
-         
             if (projeto.imagem) {
                 projetosHTML += `<img src="${projeto.imagem}" alt="Imagem do Projeto" style="max-width: 100%; height: auto;">`;
             }
 
-            projetosHTML += `<br><br><button onclick="apagarProjeto(${index})">Apagar</button>
-                </div>`;
+            projetosHTML += `<a href="/tela de descrição/index.html?index=${index}" style="display: inline-block; padding: 10px 15px; background-color: #162635; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">Saiba mais</a>
+            `;
+            projetosHTML += `<br><br><button onclick="apagarProjeto(${index})"style="display: inline-block; padding: 10px 15px; background-color: #162635; color: white; border-radius: 5px; text-decoration: none; font-weight: bold; " >Apagar</button>
+            </div>`;
         });
     } else {
         projetosHTML += '<p>Nenhum projeto cadastrado.</p>';
     }
 
-    projetosHTML += '</div>'; 
+    projetosHTML += '</div>';
     principalDiv.innerHTML = projetosHTML;
 }
-
 
 document.addEventListener('DOMContentLoaded', mostrarProjetos);
 
@@ -139,14 +151,13 @@ function pesquisa() {
                     <h3>${projeto.titulo}</h3>
                     <p style="font-weight:bold;">Descrição:</p>
                     <p>${projeto.descricao}</p>
-                    <p> Prazo de Entrega ${projeto.data}</p>`;
+                <a href="/tela de descrição/index.html?index=${index}" style="display: inline-block; padding: 10px 15px; background-color: #162635; color: white; border-radius: 5px; text-decoration: none; font-weight: bold;">Saiba mais</a>
+            
+                    <p> Prazo de Entrega ${projeto.data}</p> </div>`;
 
             if (projeto.imagem) {
                 projetosHTML += `<img src="${projeto.imagem}" alt="Imagem do Projeto" style="max-width: 100%; height: auto;">`;
             }
-
-            projetosHTML += `<br><br><button onclick="apagarProjeto(${index})">Apagar</button>
-                </div>`;
         });
     } else {
         projetosHTML += '<p>Nenhum projeto encontrado.</p>';
@@ -210,13 +221,13 @@ function editarPerfil() {
             return;
         }
 
-        // Verifica se as novas senhas coincidem
+        // confimação de senha
         if (novaSenha !== confirmarSenhaNova) {
             alert("As senhas novas não coincidem.");
             return;
         }
 
-        // Atualiza os dados
+        // Atualização de dados
         usuarios[usuarioIndex].nome = novoNome;
         usuarios[usuarioIndex].senha = novaSenha;
 
