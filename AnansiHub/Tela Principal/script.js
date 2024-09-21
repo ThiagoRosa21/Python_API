@@ -15,7 +15,7 @@ function openTab(evt, tabName) {
 
 
 function voltartela() {
-    window.location.href = "/Tela inicial/index.html";
+    window.history.back();
 }
 
 
