@@ -1,10 +1,10 @@
 function voltar() {
-    window.history.back(); // Volta para a página anterior
+    window.history.back(); 
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     const params = new URLSearchParams(window.location.search);
-    const projetoIndex = params.get('index'); // Obtém o índice do projeto da URL
+    const projetoIndex = params.get('index');
 
     const projetos = JSON.parse(localStorage.getItem('projetos')) || [];
     const projeto = projetos[projetoIndex];

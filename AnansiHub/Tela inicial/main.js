@@ -27,7 +27,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function verificarEmail() {
         var email = document.getElementById("cadastro-email").value;
     
-        // Verificar se o e-mail é válido com uma expressão regular
+        // Verificar se o e-mail é válido com uma expressão regular - vulgo chat gpt
         var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
         
         if (!emailRegex.test(email)) {
@@ -82,7 +82,7 @@ document.addEventListener("DOMContentLoaded", function() {
         localStorage.setItem("usuarioLogado", email);
 
         alert("Cadastro realizado com sucesso!");
-        window.location.href = "/Tela Principal/index.html";  // Redireciona para a Tela Principal
+        window.location.href = "/Tela Principal/index.html"; 
     }
 
     // Adiciona o evento de clique para o botão de cadastro
