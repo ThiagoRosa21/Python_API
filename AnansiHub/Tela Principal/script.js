@@ -15,7 +15,7 @@ function openTab(evt, tabName) {
 
 
 function voltartela() {
-    window.history.back();
+    window.history.back(); // metodo melhor para voltar tela
 }
 
 
@@ -24,12 +24,13 @@ document.getElementById('projeto-form').addEventListener('submit', function (eve
 
     const titulo = document.getElementById('tituloProjeto').value;
     const descricao = document.getElementById('descricaoProjeto').value;
-    const data = document.getElementById('dataEntrega').value;
+    const data_verify = new Date(); // função de Data atual
+    const data_entrega = new Date(document.getElementById('dataEntrega').value);
     const valor = document.getElementById('valor').value; // POR ALGUM MOTIVO O VALOR DO PROJETO NÃO PRINTA NA TELA QUANDO COLOCO IMAGEM
     const imagemInput = document.getElementById('imagemProjeto'); // ALÉM DISSO, O METODO DE PESQUISA TÁ DANDO RUIM 
     let imagem = '';                                              // TIPO, QUANDO PESQUISO O NOME DO PROJETOE CLICO EM SAIBA MAIS, ELE VAI
                                                                   // PARA PÁGINA DE UM PROJETO DIFERENTE 
-    const data_verify = new Date(); // CONSTANTE DE VERIFICAR DE DATA
+   
 
 
     // VERIFICADORES DOS INPUTS
@@ -45,6 +46,12 @@ if(descricao.length >= isNaN){
 if (valor <= 0) {
     alert("Por favor, insira um valor de pagamento válido.");
     return;
+} 
+
+
+//verificação de data autal
+if (data_entrega <= data_verify) {
+    alert("Adicione uma data maior que a data atual");
 }
 
 // ADICIONAR CONDIÇÃO DA DATA
