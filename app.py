@@ -18,9 +18,14 @@ books =[
     
     {
         'id':3,
-        'título':'Lógica de Programação',
-        'autor':'joão dário'
+        'título':'Diário de um aluno do CESUPA',
+        'autor':'Renato Xavier'
         
+    },
+    {
+        'id':4,
+        'titulo':'Calculo 1'
+        'autor':'João Dário'
     }
 ]
 
