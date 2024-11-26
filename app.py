@@ -27,11 +27,15 @@ books = [
         'id':4,
         'titulo':'Calculo 1',
         'autor':'Joao Dario'
+    },
+
+    {
+        'id':5,
+        'titulo':'Senhor dos Aneis',
+        'autor':'João Dário'
     }
 ]
 
-
-#consulta de todos os livros
 @app.route('/books',methods=['GET'])
 def get_books():
     return jsonify(books)
