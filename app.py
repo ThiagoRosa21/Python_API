@@ -2,30 +2,31 @@ from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
-books =[
+books = [
     {
         'id':1,
-        'título':'Harry Potter',
+        'titulo':'Harry Potter',
         'autor': 'Thiago Rosa'
     },
     
     {
         'id':2,
-        'título':'Among us',
+        'titulo':'O Novo Guia de Conversacao, em Portuguez e Inglez, em Duas Partes',
         'autor':'Lucas Augusto'
         
     },
     
     {
         'id':3,
-        'título':'Diário de um aluno do CESUPA',
+        'titulo':'Diario de um aluno do CESUPA',
         'autor':'Renato Xavier'
         
     },
+
     {
         'id':4,
-        'titulo':'Calculo 1'
-        'autor':'João Dário'
+        'titulo':'Calculo 1',
+        'autor':'Joao Dario'
     }
 ]
 
@@ -52,7 +53,7 @@ def book_edit(id):
         if book.get('id') == id:
             books[index].update(changed_book)  
             return jsonify(books[index]) 
-    return jsonify({'error': 'Book not found'}), 404 
+    return jsonify({'error': 'Book not found'}), 404
 
 # Adicionar Livros
 @app.route('/books',methods=['POST'])
