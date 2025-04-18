@@ -10,7 +10,7 @@ book_list_schema = BookSchema(many=True)
 
 logging.basicConfig(level=logging.INFO)
 
-# GET /books?autor=Thiago&pagina=1&tamanho=2
+
 @books_bp.route('/', methods=['GET'])
 def get_books():
     autor = request.args.get('autor')
